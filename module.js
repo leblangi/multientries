@@ -149,26 +149,18 @@ M.qtype_multientries.handleLatePasteWizard = function(target, confirm, msg, isPa
  * @param {string} msg the message to display
  * @param {string} type the type of message (warning, error or success)
  * @param {object} refNode the node used as reference to add the message just before it
- * @param {boolean} closeOpt if the message can be deleted
+ * @param {boolean} autoRemove if the message is automatically removed
  */
-M.qtype_multientries.displayMessage = function(msg, type, refNode, closeOpt) {
+M.qtype_multientries.displayMessage = function(msg, type, refNode, autoRemove) {
     var parent = refNode.ancestor();
-    parent.all('.msg').remove();
+    parent.all('.msg').remove(true);
     
     // Display the message
     var msg = parent.insertBefore('<div class="msg '+type+'" ><p>' + msg + '</p></div>', refNode);
     
-    // Add a close link to remove the display message
-    if (closeOpt){
-        var str = M.str.repository.close;
-        msg.insert('<a href="#" class="closeLink" title="' + str + '">' + str + '</a>');
-        if (this._closeLinkListener) {
-             this._closeLinkListener.detach();
-        }
-        this._closeLinkListenerlink = msg.one("a.closeLink").on("click",function(e, msg){
-            e.preventDefault();
-            msg.remove();
-        },this, msg);
+    // remove automatically the display message
+    if (autoRemove){
+        Y.later(3000, this, function(){msg.remove(true);});
     }
 }
 
