@@ -74,7 +74,7 @@ class qtype_multientries_renderer extends qtype_renderer {
                     array($config), false, array(
                         'name'     => 'qtype_multientries',
                         'fullpath' => '/question/type/multientries/module.js',
-                        'requires' => array('base', 'node', 'event','node-event-simulate','overlay','moodle-core-notification', 'selector-css3'),
+                        'requires' => array('base', 'node', 'event','node-event-simulate','overlay','moodle-core-notification-confirm', 'selector-css3'),
                     ));
 			}else{
 				$additionnalinfos = html_writer::tag('p', get_string('notenoughshortanwerdetected', 'qtype_multientries'));

@@ -18,8 +18,8 @@
  *
  * @package    qtype
  * @subpackage multientries
- * @copyright 2012 Cégep@distance
- * @author contact@gpleblanc.com
+ * @copyright 2014 Cégep@distance
+ * @author Gilles-Philippe Leblanc contact@gpleblanc.com
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -174,7 +174,6 @@ M.qtype_multientries.displayMessage = function(msg, type, refNode, autoRemove) {
 M.qtype_multientries.createDialogBox = function(Y, config) {
     var confirm = new M.core.confirm(config);
     confirm.centerDialogue();
-    confirm._enterKeypress.detach();
     
     // Add specific css class to the confirm box
     confirm.bodyNode.ancestor().addClass('moodle-dialogue-multientries');
